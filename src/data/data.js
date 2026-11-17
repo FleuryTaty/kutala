@@ -1,60 +1,61 @@
-const salle = [
+// src/data/data.js
+
+// 1. Les tarifs et types de sièges (évite de coder les prix en dur dans tes composants)
+export const SEAT_TYPES = {
+  STANDARD: {
+    id: "standard",
+    label: "Siège Standard",
+    price: 5000, // Ou 10, selon ta devise
+  },
+  VIP: {
+    id: "vip",
+    label: "Siège VIP",
+    price: 10000,
+  },
+};
+
+// 2. Les informations pour l'en-tête (Header)
+export const MOVIE_INFO = {
+  title: "Dune : Deuxième Partie",
+  cinema: "Cinéma Le Majestic - Salle 1",
+  date: "Mardi 17 Nov. 2026",
+  time: "20:30",
+  format: "IMAX 3D",
+};
+
+// 3. La salle organisée par rangées (Rows) pour un affichage facile en grille
+export const CINEMA_HALL = [
   {
-    titre: "Demon slayer : La forteresse de l'infinie",
-    rangee: [
-      {
-        lettre: "A",
-        categorie: "normal",
-        prix: 2000,
-        siege: [
-          {
-            id: "A1",
-            etat: "libre",
-            isVIP: false,
-          },
-          {
-            id: "A2",
-            etat: "occupe",
-          },
-          {
-            id: "A3",
-            etat: "selectionne",
-          },
-          {
-            id: "A4",
-            etat: "occupe",
-          },
-        ],
-      },
-      {
-        lettre: "B",
-        categorie: "VIP",
-        prix: 5000,
-        siege: [
-          {
-            id: "B1",
-            etat: "libre",
-            isVIP: true,
-          },
-          {
-            id: "B2",
-            etat: "occupe",
-            isVIP: true,
-          },
-          {
-            id: "B3",
-            etat: "selectionne",
-            isVIP: true,
-          },
-          {
-            id: "B4",
-            etat: "occupe",
-            isVIP: true,
-          },
-        ],
-      },
+    row: "A",
+    seats: [
+      { id: "A1", number: 1, type: "STANDARD", status: "available" },
+      { id: "A2", number: 2, type: "STANDARD", status: "available" },
+      { id: "A3", number: 3, type: "STANDARD", status: "occupied" }, // Déjà réservé
+      { id: "A4", number: 4, type: "STANDARD", status: "occupied" },
+      { id: "A5", number: 5, type: "STANDARD", status: "available" },
+      { id: "A6", number: 6, type: "STANDARD", status: "available" },
+    ],
+  },
+  {
+    row: "B",
+    seats: [
+      { id: "B1", number: 1, type: "STANDARD", status: "available" },
+      { id: "B2", number: 2, type: "STANDARD", status: "available" },
+      { id: "B3", number: 3, type: "STANDARD", status: "available" },
+      { id: "B4", number: 4, type: "STANDARD", status: "available" },
+      { id: "B5", number: 5, type: "STANDARD", status: "occupied" },
+      { id: "B6", number: 6, type: "STANDARD", status: "available" },
+    ],
+  },
+  {
+    row: "C", // Rangée VIP au fond de la salle
+    seats: [
+      { id: "C1", number: 1, type: "VIP", status: "available" },
+      { id: "C2", number: 2, type: "VIP", status: "available" },
+      { id: "C3", number: 3, type: "VIP", status: "available" },
+      { id: "C4", number: 4, type: "VIP", status: "occupied" },
+      { id: "C5", number: 5, type: "VIP", status: "available" },
+      { id: "C6", number: 6, type: "VIP", status: "available" },
     ],
   },
 ];
-
-export default salle;

@@ -1,19 +1,18 @@
-import data from "./data/data";
-import { Siege } from "./components/Siege";
+import { Salle } from "./components/Salle";
+import { useState } from "react";
+// 1. Tu déclares le state ici (initialisé avec un tableau vide [])
 
 function App() {
-  {
-    /* TABLEAU RANGEE SIEGE NORMAL */
-  }
-  const rangeeNormal = data.map((salle) =>
-    salle.rangee.filter((rangee) => rangee.categorie == "normal"),
-  );
-  {
-    /* TABLEAU RANGEE SIEGE VIP */
-  }
-  const rangeeVIP = data.map((salle) =>
-    salle.rangee.filter((rangee) => rangee.categorie == "VIP"),
-  );
+  const [selectedSeats, setSelectedSeats] = useState([]);
+
+  const handleToggleSeat = (seat) => {
+    setSelectedSeats((prev) => {
+      const exists = prev.some((s) => s.id === seat.id);
+      return exists
+        ? prev.filter((s) => s.id !== seat.id) // Retire l'objet siège
+        : [...prev, seat]; // Ajoute l'objet siège complet
+    });
+  };
 
   return (
     <main className="w-full p-2">
@@ -29,69 +28,11 @@ function App() {
           </section>
 
           {/* SALLE DE SIEGE  */}
-          <section id="salle" className="bg-gray-600  h-50">
-            <p className="text-white text-center text-2xl">Salle</p>
-
-            {/* RANGEE DES SIEGES NORMAL */}
-            <div
-              id="rangee_normal"
-              className="w-full flex items-center justify-between px-2"
-            >
-              <span className="block text-[20px] text-white font-bold mr-2">
-                {rangeeNormal.map((rangee) =>
-                  rangee.map((item) => item.lettre),
-                )}
-              </span>
-
-              {/* SIEGE */}
-              <div id="siege" className="flex items-center mt-2">
-                {rangeeNormal.map((rangee) =>
-                  rangee.map((siege) =>
-                    siege.siege.map((item) => (
-                      <Siege
-                        key={item.id}
-                        etat={item.etat}
-                        isVIP={item.isVIP}
-                      />
-                    )),
-                  ),
-                )}
-              </div>
-
-              <span className="block text-[20px] text-white font-bold ml-2">
-                {rangeeNormal.map((rangee) =>
-                  rangee.map((item) => item.lettre),
-                )}
-              </span>
-            </div>
-
-            {/* RANGEE DES SIEGES VIP */}
-            <div
-              id="rangee_VIP"
-              className="flex items-center justify-between px-2"
-            >
-              <span className="block text-[20px] text-white font-bold mr-2">
-                {rangeeVIP.map((rangee) => rangee.map((item) => item.lettre))}
-              </span>
-
-              <div id="siege" className="mt-2 flex items-center justify-center">
-                {rangeeVIP.map((rangee) =>
-                  rangee.map((siege) =>
-                    siege.siege.map((item) => (
-                      <Siege
-                        key={item.id}
-                        etat={item.etat}
-                        isVIP={item.isVIP}
-                      />
-                    )),
-                  ),
-                )}
-              </div>
-
-              <span className="block text-[20px] text-white font-bold ml-2">
-                {rangeeVIP.map((rangee) => rangee.map((item) => item.lettre))}
-              </span>
-            </div>
+          <section id="salle" className="bg-gray-600  h-50 pt-2.5">
+            <Salle
+              selectedSeats={selectedSeats}
+              onToggleSeat={handleToggleSeat}
+            />
           </section>
 
           {/* LEGENDE */}
