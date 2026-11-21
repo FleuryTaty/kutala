@@ -21,6 +21,10 @@ export const MOVIE_INFO = {
   date: "Mardi 17 Nov. 2026",
   time: "20:30",
   format: "IMAX 3D",
+  poster: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg", // URL de l'affiche
+  genre: "Science-Fiction, Aventure",
+  duration: "2h 46min",
+  rating: "Tous publics",
 };
 
 // 3. La salle organisée par rangées (Rows) pour un affichage facile en grille
@@ -50,12 +54,34 @@ export const CINEMA_HALL = [
   {
     row: "C", // Rangée VIP au fond de la salle
     seats: [
-      { id: "C1", number: 1, type: "VIP", status: "available" },
-      { id: "C2", number: 2, type: "VIP", status: "available" },
-      { id: "C3", number: 3, type: "VIP", status: "available" },
-      { id: "C4", number: 4, type: "VIP", status: "occupied" },
-      { id: "C5", number: 5, type: "VIP", status: "available" },
-      { id: "C6", number: 6, type: "VIP", status: "available" },
+      { id: "C1", number: 1, type: "STANDARD", status: "available" },
+      { id: "C2", number: 2, type: "STANDARD", status: "available" },
+      { id: "C3", number: 3, type: "STANDARD", status: "available" },
+      { id: "C4", number: 4, type: "STANDARD", status: "occupied" },
+      { id: "C5", number: 5, type: "STANDARD", status: "available" },
+      { id: "C6", number: 6, type: "STANDARD", status: "available" },
+    ],
+  },
+  {
+    row: "D", // Rangée VIP au fond de la salle
+    seats: [
+      { id: "D1", number: 1, type: "VIP", status: "available" },
+      { id: "D2", number: 2, type: "VIP", status: "available" },
+      { id: "D3", number: 3, type: "VIP", status: "available" },
+      { id: "D4", number: 4, type: "VIP", status: "occupied" },
+      { id: "D5", number: 5, type: "VIP", status: "available" },
+      { id: "D6", number: 6, type: "VIP", status: "available" },
+    ],
+  },
+  {
+    row: "E", // Rangée VIP au fond de la salle
+    seats: [
+      { id: "E1", number: 1, type: "VIP", status: "available" },
+      { id: "E2", number: 2, type: "VIP", status: "available" },
+      { id: "E3", number: 3, type: "VIP", status: "available" },
+      { id: "E4", number: 4, type: "VIP", status: "occupied" },
+      { id: "E5", number: 5, type: "VIP", status: "available" },
+      { id: "E6", number: 6, type: "VIP", status: "available" },
     ],
   },
 ];
